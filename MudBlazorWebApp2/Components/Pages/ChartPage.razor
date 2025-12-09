@@ -18,15 +18,21 @@
 
 
     <!-- Main Chat Grid (Set a fixed height for the remaining area) -->
-    <MudGrid Style="height: calc(100vh - 180px);">
+    <MudGrid Style="height: calc(100vh - 180px);" >
         <!-- Adjust 180px based on exact height of header and desired spacing -->
         <!-- Contacts column -->
         <MudItem xs="12" md="2" Style="height:100%;">
+            <MudStack Row="true" AlignItems="AlignItems.Center" Class="mt-4 mb-4"> 
+                <MudText Typo="Typo.h5" Style="font-weight:bold;">Chats</MudText>
+                <MudSpacer/>
+            <MudIconButton Icon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Size="Size.Small" Style="height:30px; background-color:#292929; color:white" />
+                <MudIconButton Icon="@Icons.Material.Filled.FilterList" Variant="Variant.Filled"  Size="Size.Small" Style="height:30px; background-color:#292929; color:white"  />
+            </MudStack>
 
             <!-- Page Header (Moved out of the grid for cleaner layout) -->
-            <MudText Typo="Typo.h5" Class="mt-4 mb-2" Style="font-weight:bold;">Chats</MudText>
+            
             <MudStack Row="true" Class="mb-4">
-                <MudAvatar Size="Size.Medium" Alt="Profile" Class="mr-2" />
+                <MudAvatar Size="Size.Medium" Alt="Profile" Class="mr-2" >T</MudAvatar>
                 <MudText Typo="Typo.subtitle1" Class="align-self-center">My Profile</MudText>
             </MudStack>
             <!-- This inner container must use 100% height and flex column layout -->
@@ -39,12 +45,14 @@
                     @foreach (var contact in Contacts)
                     {
                         <MudCard Class="@(SelectedContact == contact ? "mb-2 elevation-4" : "mb-2 elevation-0 transparent-card")"
-                                 Style="border-radius:12px">
+                             Style="border-radius:12px; background-color:#292929">
                             <MudButton Variant="Variant.Text"
                                        Color="@((SelectedContact == contact) ? Color.Primary : Color.Default)"
                                        OnClick="@(()=>SelectContact(contact))"
                                        Style="width:100%; text-align:left; margin-bottom:8px; align-items:center; justify-content:flex-start; justify-items:center; align-content:center;">
-                                <MudAvatar Size="Size.Medium" Image="@contact.ProfilePicUrl" Alt="@contact.Name" Class="mr-2" />
+                            <MudAvatar Size="Size.Medium"  Style="background-color:white" Alt="@contact.Name" Class="mr-2">
+                                <MudImage Src="https://www.transparentpng.com/thumb/user/gray-user-profile-icon-png-fP8Q1P.png" ></MudImage>
+                                </MudAvatar>
                                 @contact.Name
                             </MudButton>
                         </MudCard>
@@ -68,13 +76,13 @@
 
         <!-- Messages column -->
         <MudItem xs="12" md="10" Style="height:100%;">
-            <MudPaper Class="d-flex flex-column" Style="height:95vh; border-radius:16px; padding:16px;">
+        <MudPaper Class="d-flex flex-column" Style="height:95vh; border-radius:16px; padding:16px; background-color:#292929;">
                 <!-- Changed height to 100% -->
                 <!-- Messages header -->
                 <MudText Typo="Typo.h6" Class="mb-2" Style="font-weight:bold;">
-                    @SelectedContact?.Name ?? "Select a contact"
+                    @SelectedContact?.Name 
                 </MudText>
-                <MudDivider />
+                <MudDivider Light="true" Style="background-color:white;  height:1px; flex-grow:0; flex-shrink:0;" />
 
                 <div class="flex-grow-1 overflow-y-auto px-4 py-2">
                     @if (SelectedContact != null)
@@ -144,7 +152,7 @@
     {
         public string Name { get; set; } = "";
         public List<ChatMessage> Messages { get; set; } = new();
-        public string ProfilePicUrl { get; set; } = "";
+        public string ProfilePicUrl { get; set; } = "https://www.transparentpng.com/thumb/user/gray-user-profile-icon-png-fP8Q1P.png";
     }
     public class ChatMessage
     {

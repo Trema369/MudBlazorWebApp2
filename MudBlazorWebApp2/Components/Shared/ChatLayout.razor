@@ -1,32 +1,40 @@
 ﻿@inherits LayoutComponentBase
 
+
+<div class="gradient-bg">
+    <div class="gradients-container">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
 <MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
-<MudLayout>
-    <MudAppBar Elevation="0" >
+<MudLayout Style="background: transparent;">
+        <MudAppBar Elevation="0" Style="background: transparent;" >
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Application</MudText>
+        <MudText Typo="Typo.h5" Class="ml-3">StudBud</MudText>
         <MudSpacer />
         <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
         <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
     </MudAppBar>
 
 
-        <MudDrawer @bind-Open="@_open" Fixed="true" Elevation="1" ClipMode="DrawerClipMode.Always" Variant="@DrawerVariant.Mini" OpenMiniOnHover="true" Breakpoint="Breakpoint.None">
+        <MudDrawer @bind-Open="@_open" Fixed="true" Elevation="2" Style="background: transparent;  border-right: 1px solid rgba(255, 255, 255, 0.12); " ClipMode="DrawerClipMode.Always" Variant="@DrawerVariant.Mini" OpenMiniOnHover="true" Breakpoint="Breakpoint.None">
             <MudNavMenu>
                 <NavMenu />
             </MudNavMenu>
         </MudDrawer>
 
-        <MudMainContent Class="pt-16 pa-4 d-flex flex-column">
+        <MudMainContent Class="pt-16 pa-4 d-flex flex-column"  Style="background: transparent;">
             
                 @Body
             
         </MudMainContent>
 
 </MudLayout>
+</div>
 
 
 
@@ -115,5 +123,6 @@
         false => Icons.Material.Outlined.DarkMode,
     };
 }
+
 
 
