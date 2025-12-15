@@ -1,0 +1,25 @@
+return {
+  "nvim-treesitter/nvim-treesitter",
+  lazy = false,
+  branch = "main",
+  build = ":TSUpdate",
+  opts = {
+    ensure_installed = {
+      "c_sharp",
+      "python",
+      "lua",
+      "css",
+      "html",
+      "glsl",
+      "javascript",
+      "json",
+    },
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true,
+    },
+  },
+}
